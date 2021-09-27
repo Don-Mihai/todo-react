@@ -1,12 +1,20 @@
 import React from 'react';
 
-export default function ListItem({ text, completed }) {
+export default function ListItem({
+  text,
+  completed,
+  index,
+  onToggleComleted,
+  onRemoveTask,
+}) {
   return (
     <div
       className={`todo__list-item ${
         completed ? 'todo__list-item--completed' : ''
       }`}>
-      <div className="todo__list-item-check">
+      <div
+        onClick={() => onToggleComleted(index)}
+        className="todo__list-item-check">
         <svg
           id="Capa_1"
           height="10"
@@ -17,7 +25,9 @@ export default function ListItem({ text, completed }) {
         </svg>
       </div>
       <p>{text}</p>
-      <button className="todo__list-item-remove btn-rst">
+      <button
+        onClick={() => onRemoveTask(index)}
+        className="todo__list-item-remove btn-rst">
         <svg
           height="20"
           viewBox="-40 0 427 427.00131"
