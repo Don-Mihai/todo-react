@@ -13,11 +13,17 @@ export default function TaskField({ onAddTask }) {
     setText('');
   };
 
+  const handleKeyUp = (event) => {
+    if (event.keyCode === 13) {
+      addTask();
+    }
+  };
   return (
     <div className="todo__add-field">
       <input
         value={text}
         onChange={handleInputChange}
+        onKeyUp={handleKeyUp}
         type="text"
         placeholder="Введите текст задачи..."
       />
